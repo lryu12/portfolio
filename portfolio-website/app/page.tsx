@@ -2,9 +2,8 @@ import Image from "next/image";
 import RootLayout from "./layout";
 import Experience from "./components/experience";
 import About from "./components/about";
-import Projects from "./components/project";
+import Projects from "./components/projects";
 import More from "./components/more";
-import TabAnimator from "./TabAnimator";
 
 interface PageProps {
   // Next.js automatically injects the live URL search parameters here
@@ -21,7 +20,7 @@ export default async function Home({ searchParams }: PageProps) {
       
       {activeTab === 'about' && <About />}
       {activeTab === 'experience' && <Experience />}
-      {activeTab === 'project' && <Projects />}
+      {activeTab === 'projects' && <Projects />}
       {activeTab === 'more' && <More />}
     </div>
     

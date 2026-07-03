@@ -1,4 +1,8 @@
+// components/project.tsx
+"use client";
+
 import React from 'react';
+import { motion } from 'framer-motion'; // 👈 Import motion
 import CustomCard from '../customcard';
 
 // Clean data structure mapped straight from your Figma child arrays
@@ -9,7 +13,8 @@ const PROJECTS_DATA = [
     timeline: '2025 January - Present',
     description: 'Led a cross-functional team of five developers and designers at UBC SPOT to build an overdose detection application supporting safe drug usage within the campus community, ultimately securing a formal sponsorship from the UBC Security Team to scale production. Personally engineered the marketing landing page and contributed to the development of the core React Native application.',
     tags: ['JavaScript', 'React', 'Firebase', 'Figma', 'Trello'],
-    link: '#', // Add your real project repository or live link string here
+    link: '#', 
+    index: 0
   },
   {
     id: 'ubc-mint',
@@ -18,33 +23,74 @@ const PROJECTS_DATA = [
     description: 'Developed an open-source Brain-Computer Interface (BCI) application with the UBC MINT team to capture and analyze real-time brainwave activity from EEG headsets. Designed modular components to process and render live, high-frequency signal graphs, allowing users to easily customize frequency thresholds. By building reusable canvas elements with React-Flow, the new architecture significantly accelerated MVP development cycles for the entire engineering team.',
     tags: ['Next.js', 'React', 'JavaScript', 'Tailwind'],
     link: '#',
+    index: 1
   }
 ];
 
+// 1. The Timeline Coordinator (Parent)
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25, // Controls the smooth timing down the page hierarchy
+    },
+  },
+};
+
+// 2. The Physical Motion Definition (Child)
+const itemVariants = {
+  hidden: { 
+    opacity: 0, 
+    x: -100,              // Crisp horizontal layout slide vector
+    filter: "blur(0px)"  // Smooth blur-in reveal
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    transition: { 
+      duration: 0.5, 
+      ease: [0.16, 1, 0.3, 1] // Snappy Apple-inspired easing
+    },
+  },
+};
+
 export default function Projects() {
   return (
-    <section className="flex flex-col justify-start items-start select-none font-extralight">
+    <motion.section 
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col justify-start items-start select-none font-extralight"
+    >
       
-      {/* Tab Section Header Title (Figma Node 10:237) */}
-      <h2 className="text-3xl tracking-tight text-black mb-12">
+      {/* Chunk 1: Tab Section Header Title */}
+      <motion.h2 
+        variants={itemVariants}
+        className="text-3xl tracking-tight text-black mb-12"
+      >
         projects
-      </h2>
+      </motion.h2>
 
       {/* Projects List Loop Deck wrapper */}
       <div className="w-full flex flex-col gap-14">
         {PROJECTS_DATA.map((project) => (
-            <CustomCard
-                key={project.id}
+            // Chunk 2 & 3: Individual cards dropped sequentially into the stagger queue
+            <motion.div variants={itemVariants} key={project.id} className="w-full">
+              <CustomCard
                 id={project.id}
                 title={project.title}
                 timeline={project.timeline}
                 description={project.description}
                 tags={project.tags}
                 link={project.link}
-                />
+                index={project.index}
+              />
+            </motion.div>
           ))}
       </div>
 
-    </section>
+    </motion.section>
   );
 }

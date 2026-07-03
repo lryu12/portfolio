@@ -21,3 +21,13 @@ body {
   font: var(--font-acumin);
 }
 
+.custom-scrollbar {
+  -ms-overflow-style: none;  /* Hides scrollbar in Internet Explorer and Edge */
+  scrollbar-width: none;     /* Hides scrollbar in Firefox */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;             /* Hides scrollbar in Chrome, Safari, and Opera */
+  width: 0px;
+  background: transparent;
+}

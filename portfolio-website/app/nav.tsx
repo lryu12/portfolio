@@ -1,19 +1,55 @@
+// components/Nav.tsx
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 const NAV_ITEMS = [
   { id: 'about', label: 'about' },
   { id: 'experience', label: 'experience' },
-  { id: 'project', label: 'project' },
+  { id: 'projects', label: 'projects' },
   { id: 'more', label: 'more' },
 ];
 
 export default function Nav() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const currentTab = searchParams.get('tab') || 'about';
+
+  // Find the numerical index of the currently active tab layout panel
+  const currentIndex = NAV_ITEMS.findIndex((item) => item.id === currentTab);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Prevent standard page jumping if user taps Arrow keys
+      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        event.preventDefault();
+      } else {
+        return; // Ignore all other keys
+      }
+
+      let nextIndex = currentIndex;
+
+      if (event.key === 'ArrowDown') {
+        // Drop down to next item, clamping at the bottom of the deck array index
+        nextIndex = Math.min(currentIndex + 1, NAV_ITEMS.length - 1);
+      } else if (event.key === 'ArrowUp') {
+        // Move up to previous item, clamping at index 0
+        nextIndex = Math.max(currentIndex - 1, 0);
+      }
+
+      // If the target index is different from where we are, update the route parameter
+      if (nextIndex !== currentIndex) {
+        const nextItem = NAV_ITEMS[nextIndex];
+        // Use scroll: false so the viewport tracking parameters persist smoothly
+        router.push(`/?tab=${nextItem.id}`, { scroll: false });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentIndex, router]);
 
   return (
     <nav className="flex flex-col justify-start items-start gap-6 mt-20 select-none font-thin">

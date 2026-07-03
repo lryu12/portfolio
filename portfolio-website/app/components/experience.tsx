@@ -15,7 +15,8 @@ const EXPERIENCES_DATA = [
     description:
       "Built internal tools to optimize everyday business operations such as internal network checker for token applications, automated database backup & restoration system using Docker, and HyperFIDO security key programming & managing platform.",
     skills: ["C# .NET", "WPF", "Docker", "JavaScript", "MariaDB"],
-    link: "https://www.hypersecu.com"
+    link: "https://www.hypersecu.com",
+    index: 0
   },
   {
     id: "mygrid",
@@ -25,7 +26,8 @@ const EXPERIENCES_DATA = [
     description:
       "Engineered scalable backend architectures and data infrastructure using TypeScript. Architected automated data-parsing solutions to process spreadsheets into production relational models via PostgREST and Neon serverless Postgres. Implemented optimization systems utilizing Directed Acyclic Graph (DAG) algorithms to analyze and track runtime efficiency for BPMN business processes.",
     skills: ["TypeScript", "Node.js", "React", "JavaScript"],
-    link: "https://schema0.com"
+    link: "https://schema0.com",
+    index: 1
   },
 ];
 
@@ -35,7 +37,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12, // The delay between each chunk sliding down
+      staggerChildren: 0.25, // The delay between each chunk sliding down
     },
   },
 };
@@ -44,8 +46,8 @@ const containerVariants = {
 const itemVariants = {
   hidden: { 
     opacity: 0, 
-    x: -20,              // Clear left-to-right starting vector
-    filter: "blur(4px)"  // The premium micro-blur finish
+    x: -100,              // Clear left-to-right starting vector
+    filter: "blur(0px)"  // The premium micro-blur finish
   },
   visible: {
     opacity: 1,

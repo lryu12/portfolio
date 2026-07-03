@@ -12,7 +12,7 @@ export default function Header() {
       </p>
 
         <p className="font-thin tracking-wide text-lg">
-        I build stable, high-performance systems.
+        Designing the logic underneath.
       </p>
     </header>
   );
