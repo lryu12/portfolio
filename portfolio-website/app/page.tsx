@@ -18,7 +18,7 @@ export default async function Home({ searchParams }: PageProps) {
   return (
     <div className="w-full">
       
-      {activeTab === 'about' && <About />}
+      {/* {activeTab === 'about' && <About />} */}
       {activeTab === 'experience' && <Experience />}
       {activeTab === 'projects' && <Projects />}
       {activeTab === 'more' && <More />}

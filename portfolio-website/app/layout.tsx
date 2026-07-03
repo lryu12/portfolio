@@ -1,7 +1,6 @@
-// app/layout.tsx
 import "./globals.css";
-import Nav from './nav'
-import Header from './header'
+import { Suspense } from "react";
+import SidebarContent from "./sidebar-content";
 
 export default function RootLayout({
   children,
@@ -9,23 +8,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // 1. Force the root html element to take up exactly the viewport height and block overflow bounce
     <html lang="en" className="h-screen overflow-hidden">
-      {/* 2. Constrain the body layout row so it cannot scroll globally */}
       <body className="h-screen w-screen overflow-hidden flex flex-row bg-white antialiased">
         
-        {/* Persistent Sidebar Column: Fixed in place, never moves */}
-        <div className="ml-32 flex-shrink-0">
-          <Header/>
-          <Nav/>
-        </div>
+        {/* Safe client-side conditional sidebar area */}
+        <Suspense fallback={<div className="ml-32 w-48 bg-white" />}>
+          <SidebarContent />
+        </Suspense>
         
-        {/* 
-          3. The Scrollable Portal Frame: 
-          - h-screen limits its height to the window bounds
-          - overflow-y-auto lets just this section handle scrolling
-          - custom-scrollbar class can be used to hide the scrollbar track completely
-        */}
+        {/* The Scrollable Portal Frame stays completely unaffected */}
         <main className="max-w-176 px-4 py-5 h-screen overflow-y-auto ml-50 w-1/2 mr-15 pt-24 mt-4 custom-scrollbar pb-32">
           {children}
         </main>

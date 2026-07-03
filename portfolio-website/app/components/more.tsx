@@ -18,7 +18,7 @@ const MORE_DATA = [
     id: 'cariem',
     title: 'Clothing Brand Business - Cariem',
     timeline: '2025 - Present',
-    description: 'Owned and operated a clothing brand handling meta ads, photoshop/illustrator design, marketing shoots, email & sms marketing, and shopify store management.',
+    description: 'Owned and operated a clothing brand handling Meta ads, Photoshop/Illustrator design, marketing shoots, Klaviyo email & sms marketing, and Shopify store management.',
     tags: ["Meta Ads", "Shopify", "Photoshop", "Illustrator", "Klaviyo"],
     link: "https://cariemonline.com",
     image: CariemLogo,
