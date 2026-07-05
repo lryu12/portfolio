@@ -12,31 +12,40 @@ const NAV_ITEMS = [
   { id: 'more', label: 'more' },
 ];
 
-// 1. The Coordinator (Parent)
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { 
+    opacity: 0,
+    transition: {
+      when: "afterChildren",
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+    }
+  },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, // Slightly quicker stagger for nav items so it feels snappy
+      staggerChildren: 0.1,
+      when: "beforeChildren"
     },
   },
 };
 
-// 2. The Physical Motion Definition (Child)
 const itemVariants = {
   hidden: { 
     opacity: 0, 
-    x: -100,              // Matching left-to-right starting vector
-    filter: "blur(0px)" 
+    x: -40,
+    transition: {
+      duration: 0.35,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.2 
+    }
   },
   visible: {
     opacity: 1,
     x: 0,
-    filter: "blur(0px)",
     transition: { 
-      duration: 0.5, 
-      ease: [0.16, 1, 0.3, 1] // Snappy Apple-style ease-out curve
+      duration: 0.3, 
+      ease: [0.16, 1, 0.3, 1] 
     },
   },
 };
@@ -48,11 +57,11 @@ export default function Nav() {
   const currentIndex = NAV_ITEMS.findIndex((item) => item.id === currentTab);
 
   useEffect(() => {
-    // Prevent navigation hijacking while hidden on the about tab
     if (currentTab === 'about') return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowUp' || event.key === 'ArrowDown' || 
+      if (
+        event.key === 'ArrowUp' || event.key === 'ArrowDown' || 
         event.key === 'ArrowRight' || event.key === 'ArrowLeft'
       ) {
         event.preventDefault();
@@ -82,42 +91,54 @@ export default function Nav() {
     <motion.nav 
       variants={containerVariants}
       initial="hidden"
-      /* 🔥 Re-runs the slide-in stagger every single time you navigate away from about */
       animate={currentTab !== 'about' ? 'visible' : 'hidden'}
       className="flex flex-col justify-start items-start gap-6 mt-20 select-none font-thin"
     >
       {NAV_ITEMS.map((item) => {
         const isActive = currentTab === item.id;
+        
         return (
           <motion.div 
             key={item.id} 
             variants={itemVariants}
             className="w-full"
           >
+            {/* ⚡ 'initial="rest" whileHover="hover"' propagates states down to both sub-components cleanly */}
             <Link
               href={`/?tab=${item.id}`}
               scroll={false} 
               className="group flex items-center gap-4 h-9.5 cursor-pointer text-left focus:outline-none decoration-none"
             >
-              {/* Interactive Vector Indicators */}
-              <span
-                className={`h-0.75 rounded-full transition-all duration-200 ease-out ${
-                  isActive 
-                    ? 'w-16.5 bg-[#575757]' 
-                    : 'w-8.25 bg-[#a1a1a1] group-hover:w-12 group-hover:bg-[#575757]'
+              <motion.span
+                initial={false}
+                animate={{
+                  width: isActive ? "66px" : "33px"
+                }}
+                whileHover={{ 
+                  // If it's active it stays extended, otherwise stretches cleanly to 48px
+                  width: isActive ? "66px" : "48px" 
+                }}
+                transition={{
+                  duration: 0.22,
+                  ease: [0.16, 1, 0.3, 1] 
+                }}
+                className={`h-0.75 rounded-full transition-colors duration-200 ${
+                  isActive ? 'bg-[#575757]' : 'bg-[#a1a1a1] group-hover:bg-[#575757]'
                 }`}
               />
 
-              {/* Typography Labels */}
-              <span
+              {/* ⚡ Micro Typography Slide: moves right slightly (x: 4) on hover for a tactile response */}
+              <motion.span
+                whileHover={{ x: isActive ? 0 : 4 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
                 className={`text-lg tracking-wide transition-colors duration-200 ${
                   isActive 
-                    ? 'text-black' 
+                    ? 'text-black font-normal' 
                     : 'text-[#a1a1a1] group-hover:text-black'
                 }`}
               >
                 {item.label}
-              </span>
+              </motion.span>
             </Link>
           </motion.div>
         );

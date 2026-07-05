@@ -63,11 +63,11 @@ export default function About() {
       className="mt-20 font-extralight text-black"
     >
       <motion.p variants={itemVariants} className="max-w-md">
-        I’m a senior at University of British Columbia studying in a Combined Major in Computer Science and Business.
+        I’m a senior at University of British Columbia studying a Combined Major in Computer Science and Business.
       </motion.p>
       
       <motion.p variants={itemVariants} className="max-w-md mt-5">
-        I enjoy designing across different mediums - whether it’s the data pipelines and APIs that power an application, or the cut and construction of a garment for my clothing brand.
+        I enjoy designing - whether it’s the data pipelines and APIs that power an application, or the cut and construction of a garment for my clothing brand.
       </motion.p>
 
       {/* Static premium helper prompt: Since it goes to experience instantly, we lock the text */}

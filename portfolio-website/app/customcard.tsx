@@ -1,4 +1,7 @@
+"use client";
+
 import Image, { StaticImageData } from "next/image";
+import { motion } from "framer-motion"; // ⚡ Imported Framer Motion
 
 interface CustomCardProps {
   id: string;
@@ -7,7 +10,7 @@ interface CustomCardProps {
   description: string;
   tags: string[];
   link: string;
-  image?: StaticImageData; // Array of strings
+  image?: StaticImageData; 
 }
 
 export default function CustomCard({
@@ -26,7 +29,6 @@ export default function CustomCard({
         className="w-full max-w-167 flex flex-col items-start text-left"
       >
         {/* Timeline Timestamp */}
-        
         <span className="text-[#818181] text-sm tracking-wide ">
           {timeline}
         </span>
@@ -35,12 +37,12 @@ export default function CustomCard({
         <a
           href={link}
           target="_blank"
-          rel=" external"
+          rel="external"
           className="flex items-center gap-2 group/link text-xl font-normal text-black hover:text-[#575757] transition-colors duration-200 mb-3"
         >
           <h3 className="tracking-tight leading-snug">{title}</h3>
 
-          {/* External Arrow Vector Icon Indicator (Figma Nodes 12:273 and 12:275) */}
+          {/* External Arrow Vector Icon Indicator */}
           <svg
             className="w-5 h-5 text-black group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform duration-200 ease-out shrink-0"
             fill="none"
@@ -76,14 +78,23 @@ export default function CustomCard({
         {/* Tech Stack Skill Pill Badges */}
         <div className="w-full flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <div
+            <motion.div
               key={tag}
-              className="px-4 py-1 bg-[#dfdfdf] border border-[#aeaeae] rounded-full flex items-center justify-center"
+              // ⚡ Tactile Jump Axis Vector: Pops up smoothly by 3 pixels
+              whileHover={{ y: -3 }}
+              // Heavy damping and minimal mass to keep the response snappy and lag-free
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 18,
+                mass: 0.1
+              }}
+              className="px-4 py-1 bg-[#dfdfdf] border border-[#aeaeae] rounded-full flex items-center justify-center cursor-pointer select-none"
             >
               <span className="text-black text-xs font-medium tracking-wide">
                 {tag}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

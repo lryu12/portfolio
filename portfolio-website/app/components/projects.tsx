@@ -11,7 +11,7 @@ const PROJECTS_DATA = [
     id: 'ubc-spot',
     title: 'Overdose Detection Software - UBC SPOT',
     timeline: '2025 January - Present',
-    description: 'Led a cross-functional team of five developers and designers at UBC SPOT to build an overdose detection application supporting safe drug usage within the campus community, ultimately securing a formal sponsorship from the UBC Security Team to scale production. Personally engineered the marketing landing page and contributed to the development of the core React Native application.',
+    description: 'I led a cross-functional team of five developers and designers at UBC SPOT to build an overdose detection application supporting safe drug usage within the campus community, ultimately securing a formal sponsorship from the UBC Security Team to scale production. Personally engineered the marketing landing page and contributed to the development of the core React Native application.',
     tags: ['JavaScript', 'React', 'Firebase', 'Figma', 'Trello'],
     link: '#', 
     index: 0
@@ -20,7 +20,7 @@ const PROJECTS_DATA = [
     id: 'ubc-mint',
     title: 'Brain-Computer Interface Software - UBC MINT',
     timeline: '2024 November - 2025 April',
-    description: 'Developed an open-source Brain-Computer Interface (BCI) application with the UBC MINT team to capture and analyze real-time brainwave activity from EEG headsets. Designed modular components to process and render live, high-frequency signal graphs, allowing users to easily customize frequency thresholds. By building reusable canvas elements with React-Flow, the new architecture significantly accelerated MVP development cycles for the entire engineering team.',
+    description: 'I developed an open-source Brain-Computer Interface (BCI) application with the UBC MINT team to capture and analyze real-time brainwave activity from EEG headsets. Designed modular components to process and render live, high-frequency signal graphs, allowing users to easily customize frequency thresholds. By building reusable canvas elements with React-Flow, the new architecture significantly accelerated MVP development cycles for the entire engineering team.',
     tags: ['Next.js', 'React', 'JavaScript', 'Tailwind'],
     link: '#',
     index: 1

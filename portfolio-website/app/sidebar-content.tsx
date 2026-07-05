@@ -24,6 +24,7 @@ export default function SidebarContent() {
       <div className={!isAboutPage ? "block" : "hidden"}>
         <Nav />
       </div>
+      {/* <GridMatrix isAboutPage={isAboutPage} /> */}
     </div>
   );
 }

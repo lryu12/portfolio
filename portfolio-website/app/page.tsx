@@ -22,6 +22,7 @@ export default async function Home({ searchParams }: PageProps) {
       {activeTab === 'experience' && <Experience />}
       {activeTab === 'projects' && <Projects />}
       {activeTab === 'more' && <More />}
+      
     </div>
     
   );

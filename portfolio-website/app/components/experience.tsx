@@ -13,7 +13,7 @@ const EXPERIENCES_DATA = [
     role: "Software Engineer Intern",
     company: "Hypersecu",
     description:
-      "Built internal tools to optimize everyday business operations such as internal network checker for token applications, automated database backup & restoration system using Docker, and HyperFIDO security key programming & managing platform.",
+      "I built internal tools to optimize everyday business operations such as internal network checker for token applications, automated database backup & restoration system using Docker, and developing the HyperFIDO security key programming & managing platform.",
     skills: ["C# .NET", "WPF", "Docker", "JavaScript", "MariaDB"],
     link: "https://www.hypersecu.com",
     index: 0
@@ -23,8 +23,7 @@ const EXPERIENCES_DATA = [
     date: "2024 November - 2025 April",
     role: "Software Engineer Intern",
     company: "Mygrid (Schema0)",
-    description:
-      "Engineered scalable backend architectures and data infrastructure using TypeScript. Architected automated data-parsing solutions to process spreadsheets into production relational models via PostgREST and Neon serverless Postgres. Implemented optimization systems utilizing Directed Acyclic Graph (DAG) algorithms to analyze and track runtime efficiency for BPMN business processes.",
+    description: "I worked on creating scalable backends and data pipelines with TypeScript. I’ve engineered automated engines to parse spreadsheets into relational models via PostgREST and Neon serverless Postgres, and designed optimization systems using DAG algorithms to analyze and track runtime efficiency for complex business processes.",
     skills: ["TypeScript", "Node.js", "React", "JavaScript"],
     link: "https://schema0.com",
     index: 1
