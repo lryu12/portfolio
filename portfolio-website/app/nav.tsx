@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const NAV_ITEMS = [
   { id: 'about', label: 'about' },
@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { id: 'more', label: 'more' },
 ];
 
-const containerVariants = {
+const containerVariants : Variants = {
   hidden: { 
     opacity: 0,
     transition: {
@@ -30,7 +30,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants : Variants = {
   hidden: { 
     opacity: 0, 
     x: -40,

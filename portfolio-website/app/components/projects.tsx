@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion'; // 👈 Import motion
+import { motion, Variants } from 'framer-motion'; // 👈 Import motion
 import CustomCard from '../customcard';
 
 // Clean data structure mapped straight from your Figma child arrays
@@ -26,9 +26,9 @@ const PROJECTS_DATA = [
     index: 1
   }
 ];
-
+ 
 // 1. The Timeline Coordinator (Parent)
-const containerVariants = {
+const containerVariants : Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -39,7 +39,7 @@ const containerVariants = {
 };
 
 // 2. The Physical Motion Definition (Child)
-const itemVariants = {
+const itemVariants : Variants = {
   hidden: { 
     opacity: 0, 
     x: -100,              // Crisp horizontal layout slide vector
@@ -85,7 +85,6 @@ export default function Projects() {
                 description={project.description}
                 tags={project.tags}
                 link={project.link}
-                index={project.index}
               />
             </motion.div>
           ))}

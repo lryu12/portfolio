@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import CustomCard from "../customcard";
 
 // Unified experiences timeline feed
@@ -42,7 +42,7 @@ const containerVariants = {
 };
 
 // 2. The Physical Motion Definition (Child)
-const itemVariants = {
+const itemVariants : Variants = {
   hidden: { 
     opacity: 0, 
     x: -100,              // Clear left-to-right starting vector

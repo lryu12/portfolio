@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import CustomCard from "../customcard";
 import CariemLogo from "@/public/cursiveoverlaygraphic-black.png";
 
@@ -26,7 +26,7 @@ const MORE_DATA = [
 ];
 
 // 1. The Timeline Coordinator (Parent) - Matched perfectly to your Projects tab
-const containerVariants = {
+const containerVariants : Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -37,7 +37,7 @@ const containerVariants = {
 };
 
 // 2. The Physical Motion Definition (Child) - Matched perfectly to your Projects tab
-const itemVariants = {
+const itemVariants : Variants= {
   hidden: { 
     opacity: 0, 
     x: -100,              // Crisp horizontal layout slide vector

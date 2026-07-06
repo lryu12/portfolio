@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const containerVariants = {
@@ -14,7 +14,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants : Variants = {
   hidden: { 
     opacity: 0, 
     x: -100,
