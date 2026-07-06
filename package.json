@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "framer-motion": "^12.42.2",
-    "uvcanvas": "^0.3.0",
-    "webgl-fluid-simulation": "^1.0.0"
-  }
-}
