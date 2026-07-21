@@ -89,7 +89,7 @@ export default function CustomCard({
                 damping: 18,
                 mass: 0.1
               }}
-              className="px-4 py-1 bg-[#dfdfdf] border border-[#aeaeae] rounded-full flex items-center justify-center cursor-pointer select-none"
+              className="px-4 py-1 bg-[#dfdfdf] border border-[#aeaeae] rounded-full flex items-center justify-center select-none"
             >
               <span className="text-black text-xs font-medium tracking-wide">
                 {tag}

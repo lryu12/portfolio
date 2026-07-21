@@ -24,6 +24,15 @@ const PROJECTS_DATA = [
     tags: ['Next.js', 'React', 'JavaScript', 'Tailwind'],
     link: '#',
     index: 1
+  },
+  {
+    id: 'kafka',
+    title: 'Real-time Stock Market Simulation Data Pipeline',
+    timeline: ' ',
+    description: 'I Designed a real-time stock market streaming pipeline to tackle high-throughput data processing using Python and a modern AWS stack. Using an Apache Kafka broker running on EC2, the system handles 100+ live data payloads per second, passing them to an S3 data lake. With automated AWS Glue schema crawlers and AWS Athena for ad-hoc SQL queries, it converts continuous, raw streaming data into an immediately queryable cloud data warehouse.',
+    tags: ['Apache Kafka', 'Python', 'AWS S3', 'AWS EC2', 'AWS Glue Crawler', 'AWS Athena'],
+    link: 'https://github.com/lryu12/Real-time-Kafka-Data-Pipeline',
+
   }
 ];
  
