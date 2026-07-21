@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Suspense } from "react";
 import SidebarContent from "./sidebar-content";
+import { Analytics } from "@vercel/analytics/next"
+
 
 export default function RootLayout({
   children,
@@ -59,6 +61,7 @@ export default function RootLayout({
           {/* The Scrollable Portal Frame stays completely unaffected */}
           <main className="max-w-176 px-4 py-5 h-screen overflow-y-auto ml-50 w-1/2 mr-15 pt-24 mt-4 custom-scrollbar pb-32">
             {children}
+            <Analytics/>
           </main>
         </div>
 
