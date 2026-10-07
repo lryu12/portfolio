@@ -31,10 +31,15 @@ const itemVariants : Variants = {
   },
 };
 
-export default function About() {
+type AboutProps = {
+  isActiveSlide?: boolean;
+};
+
+export default function About({ isActiveSlide }: AboutProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentTab = searchParams.get("tab") || "about";
+  const isVisible = isActiveSlide ?? currentTab === "about";
 
   useEffect(() => {
     if (currentTab !== "about") return;
@@ -59,8 +64,8 @@ export default function About() {
     <motion.div 
       variants={containerVariants}
       initial="hidden"
-      animate={currentTab === "about" ? "visible" : "hidden"}
-      className="mt-20 font-extralight text-black"
+      animate={isVisible ? "visible" : "hidden"}
+      className="mt-8 w-full text-left font-extralight text-black md:mt-20"
     >
       <motion.p variants={itemVariants} className="max-w-md">
         I’m a senior at University of British Columbia studying a Combined Major in Computer Science and Business.
